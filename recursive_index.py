@@ -3,6 +3,8 @@ import login
 import time
 import cleanup
 import pandas as pd
+import parser_index
+
 
 
 begin = time.perf_counter()
@@ -23,7 +25,7 @@ def recursiveBackup(args_array):
     endLine = f'{hostnme}#  !!!!!!!!!!'
 
     
-    saved_screen = f'SavedScreens/SavedScreen_{consoleServerIP}_{portNumber}.txt'
+    saved_screen = f'C:/Users/SebastienPierre-Jacq/Desktop/Python Projects/Automated backup-scripts/Aruba6300/SavedScreens/SavedScreen_{consoleServerIP}_{portNumber}.txt'
 
     tn = telnetlib.Telnet(consoleServerIP, portNumber)
 
@@ -47,11 +49,16 @@ def recursiveBackup(args_array):
         backup_file.write(output)
         backup_file.close()
     
-    print(f'Unprocessed file created for {hostname}, begin removing empty lines')
+    print(f'Unprocessed file created for {hostnme}, begin removing empty lines')
 
     cleanup.removeSpaces(f'BackupOutput/Unprocessed/{hostnme}_{consoleServerIP}_{portNumber}_Backup.txt', hostnme)
 
-    print(f'Empty lines removed from {hostname} file')
+    print(f'Empty lines removed from {hostnme} file')
+    print(f'Begin parsing {hostnme} for Excel sheets')
+
+    parser_index.parseConfigFile(f'BackupOutput/{hostnme}_Staged.txt')
+
+    print(f'Finish creating Excel Outputs for {hostnme}')
 
 
 
@@ -60,7 +67,10 @@ def recursiveBackup(args_array):
 
 
 
-df_inputs = pd.read_excel('Aruba6300_Data_Inputs.xlsx')
+
+
+
+df_inputs = pd.read_excel('C:/Users/SebastienPierre-Jacq/Desktop/Python Projects/Automated backup-scripts/Aruba6300/Aruba6300_Data_Inputs.xlsx')
 
 args = []
 
