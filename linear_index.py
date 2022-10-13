@@ -32,7 +32,7 @@ def createBackup(hostname, usrname, passwrd, saved_screen, consoleServerIP, port
 
 
 
-df_inputs = pd.read_excel('C:/Users/SebastienPierre-Jacq/Desktop/Python Projects/Automated backup-scripts/Aruba6300/Aruba6300_Data_Inputs.xlsx')
+df_inputs = pd.read_excel('Aruba6300_Data_Inputs.xlsx')
 
 
 
@@ -49,7 +49,7 @@ for data_row in range(len(df_inputs)):
         PASSWORD = '\n'.encode('ascii')
 
 
-    SAVED_SCREEN = f'C:/Users/SebastienPierre-Jacq/Desktop/Python Projects/Automated backup-scripts/Aruba6300/SavedScreens/SavedScreen_{CONSOLE_SERVER}_{PORT}.txt'
+    SAVED_SCREEN = f'SavedScreens/SavedScreen_{CONSOLE_SERVER}_{PORT}.txt'
 
     createBackup(HOSTNAME, USRNAME, PASSWORD, SAVED_SCREEN, CONSOLE_SERVER, PORT)
 

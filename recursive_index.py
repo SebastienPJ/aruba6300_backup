@@ -25,7 +25,7 @@ def recursiveBackup(args_array):
     endLine = f'{hostnme}#  !!!!!!!!!!'
 
     
-    saved_screen = f'C:/Users/SebastienPierre-Jacq/Desktop/Python Projects/Automated backup-scripts/Aruba6300/SavedScreens/SavedScreen_{consoleServerIP}_{portNumber}.txt'
+    saved_screen = f'SavedScreens/SavedScreen_{consoleServerIP}_{portNumber}.txt'
 
     tn = telnetlib.Telnet(consoleServerIP, portNumber)
 
@@ -70,7 +70,7 @@ def recursiveBackup(args_array):
 
 
 
-df_inputs = pd.read_excel('C:/Users/SebastienPierre-Jacq/Desktop/Python Projects/Automated backup-scripts/Aruba6300/Aruba6300_Data_Inputs.xlsx')
+df_inputs = pd.read_excel('Aruba6300_Data_Inputs.xlsx')
 
 args = []
 
